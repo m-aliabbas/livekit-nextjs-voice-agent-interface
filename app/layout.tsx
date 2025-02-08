@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import "@livekit/components-styles";
 import "./globals.css";
+import { Public_Sans } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const publicSans400 = Public_Sans({
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -23,12 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`h-full ${publicSans400.className}`}>
+      <body className="h-full">{children}</body>
     </html>
   );
 }
