@@ -4,7 +4,6 @@ import {
   VideoGrant,
   AgentDispatchClient,
 } from "livekit-server-sdk";
-// import { RoomAgentDispatch, RoomConfiguration, VideoGrant } from "@livekit/protocol";
 import { NextResponse } from "next/server";
 
 // NOTE: you are expected to define the following environment variables in `.env.local`:
