@@ -1,6 +1,8 @@
 # LiveKit + Next.js AI Voice Agent Interface
 
 A basic example of a Next.js frontend for a LiveKit AI voice agent.
+- data passing between frontend and backend voice agent
+- agent dispatch to connect both frontend and calling via optional SIP trunk setup (see repo linked at bottom)
 
 ## Dev Setup
 
@@ -17,7 +19,7 @@ Set up the environment by copying `.env.example` to `.env.local` and filling in 
 - `LIVEKIT_API_KEY`
 - `LIVEKIT_API_SECRET`
 
-Run the agent:
+Run the Next.js application:
 
 ```console
 yarn dev
