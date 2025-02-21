@@ -2,6 +2,7 @@ import {
   AccessToken,
   AccessTokenOptions,
   VideoGrant,
+  AgentDispatchClient,
 } from "livekit-server-sdk";
 import { NextResponse } from "next/server";
 
@@ -47,6 +48,25 @@ export async function POST(req: Request) {
     const roomName = `voice_assistant_room_${Math.floor(
       Math.random() * 10_000
     )}`;
+
+    // Explicitly dispatch an agent to this room.
+    // Ensure that the agent's WorkerOptions are configured with agentName = "inbound-agent"
+    const agentName = "inbound-agent";
+    const agentDispatchClient = new AgentDispatchClient(
+      LIVEKIT_URL,
+      API_KEY,
+      API_SECRET
+    );
+    const dispatchOptions = { metadata: '{"customData": "example"}' };
+
+    // Create explicit dispatch
+    const dispatch = await agentDispatchClient.createDispatch(
+      roomName,
+      agentName,
+      dispatchOptions
+    );
+    console.log("Dispatch created:", dispatch);
+
     const participantToken = await createParticipantToken(
       {
         identity: participantIdentity,
